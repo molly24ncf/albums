@@ -1,7 +1,33 @@
 ---
 title: "Albums"
+resources:
+  - data
 ---
 
-This is a Quarto website.
+```{ojs}
+//| echo: false
+viewof album = Inputs.select(
+  new Map([
+    ["Queen (1973)", "data/01_queen.jpg"],
+    ["Queen II (1974)", "data/02_queen_ii.jpg"],
+    ["Sheer Heart Attack (1974)", "data/03_sheer_heart_attack.jpg"],
+    ["A Night at the Opera (1975)", "data/04_a_night_at_the_opera.jpg"],
+    ["A Day at the Races (1976)", "data/05_a_day_at_the_races.jpg"],
+    ["News of the World (1977)", "data/06_news_of_the_world.jpg"],
+    ["Jazz (1978)", "data/07_jazz.jpg"],
+    ["The Game (1980)", "data/08_the_game.jpg"],
+    ["Flash Gordon (1980)", "data/09_flash_gordon.jpg"],
+    ["Hot Space (1982)", "data/10_hot_space.jpg"],
+    ["The Works (1984)", "data/11_the_works.jpg"],
+    ["A Kind of Magic (1986)", "data/12_a_kind_of_magic.jpg"],
+    ["The Miracle (1989)", "data/13_the_miracle.jpg"],
+    ["Innuendo (1991)", "data/14_innuendo.jpg"],
+    ["Made in Heaven (1995)", "data/15_made_in_heaven.jpg"]
+  ]),
+  { label: "Select an album:" }
+)
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+html`<div style="margin-top: 20px;">
+  <img src="${album}" alt="Album cover" style="max-width: 400px; width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
+</div>`
+```
