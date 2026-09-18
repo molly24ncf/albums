@@ -1,16 +1,16 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Albums",
+    "section": "",
+    "text": "albumsData = FileAttachment(\"data/similarity.json\").json()\n\nartists = [\"All\", ...new Set(albumsData.map(d =&gt; d.artist).sort())]\n\nviewof selectedArtist = Inputs.select(artists, { label: \"Select an artist:\" })\n\nfilteredAlbums = selectedArtist === \"All\" \n  ? albumsData \n  : albumsData.filter(d =&gt; d.artist === selectedArtist)\n\nviewof album = Inputs.select(\n  new Map(filteredAlbums.map(d =&gt; [selectedArtist === \"All\" ? d.display : d.title, d.file])),\n  { label: \"Select an album:\" }\n)\n\nhtml`&lt;div style=\"margin-top: 20px;\"&gt;\n  &lt;img src=\"${album}\" alt=\"Album cover\" style=\"max-width: 400px; width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);\"&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncurrentAlbum = albumsData.find(d =&gt; d.file === album)\n\nsimilarAlbums = currentAlbum?.similar.slice(0, 3) ?? []\n\ndifferentAlbums = currentAlbum ? currentAlbum.similar.slice(-3).reverse() : []\n\nhtml`\n&lt;div style=\"margin-top: 30px;\"&gt;\n  &lt;h3&gt;Most Similar Albums&lt;/h3&gt;\n  &lt;div style=\"display: flex; gap: 20px; flex-wrap: wrap;\"&gt;\n    ${similarAlbums.map(d =&gt; html`\n      &lt;div style=\"text-align: center; width: 160px;\"&gt;\n        &lt;img src=\"${d.file}\" alt=\"${d.display}\" style=\"width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);\"&gt;\n        &lt;p style=\"margin-top: 8px; font-size: 14px;\"&gt;${d.display}&lt;/p&gt;\n      &lt;/div&gt;\n    `)}\n  &lt;/div&gt;\n&lt;/div&gt;\n\n&lt;div style=\"margin-top: 30px;\"&gt;\n  &lt;h3&gt;Most Different Albums&lt;/h3&gt;\n  &lt;div style=\"display: flex; gap: 20px; flex-wrap: wrap;\"&gt;\n    ${differentAlbums.map(d =&gt; html`\n      &lt;div style=\"text-align: center; width: 160px;\"&gt;\n        &lt;img src=\"${d.file}\" alt=\"${d.display}\" style=\"width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);\"&gt;\n        &lt;p style=\"margin-top: 8px; font-size: 14px;\"&gt;${d.display}&lt;/p&gt;\n      &lt;/div&gt;\n    `)}\n  &lt;/div&gt;\n&lt;/div&gt;\n`"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Albums",
-    "section": "",
-    "text": "viewof album = Inputs.select(\n  new Map([\n    [\"Queen (1973)\", \"data/01_queen.jpg\"],\n    [\"Queen II (1974)\", \"data/02_queen_ii.jpg\"],\n    [\"Sheer Heart Attack (1974)\", \"data/03_sheer_heart_attack.jpg\"],\n    [\"A Night at the Opera (1975)\", \"data/04_a_night_at_the_opera.jpg\"],\n    [\"A Day at the Races (1976)\", \"data/05_a_day_at_the_races.jpg\"],\n    [\"News of the World (1977)\", \"data/06_news_of_the_world.jpg\"],\n    [\"Jazz (1978)\", \"data/07_jazz.jpg\"],\n    [\"The Game (1980)\", \"data/08_the_game.jpg\"],\n    [\"Flash Gordon (1980)\", \"data/09_flash_gordon.jpg\"],\n    [\"Hot Space (1982)\", \"data/10_hot_space.jpg\"],\n    [\"The Works (1984)\", \"data/11_the_works.jpg\"],\n    [\"A Kind of Magic (1986)\", \"data/12_a_kind_of_magic.jpg\"],\n    [\"The Miracle (1989)\", \"data/13_the_miracle.jpg\"],\n    [\"Innuendo (1991)\", \"data/14_innuendo.jpg\"],\n    [\"Made in Heaven (1995)\", \"data/15_made_in_heaven.jpg\"]\n  ]),\n  { label: \"Select an album:\" }\n)\n\nhtml`&lt;div style=\"margin-top: 20px;\"&gt;\n  &lt;img src=\"${album}\" alt=\"Album cover\" style=\"max-width: 400px; width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);\"&gt;\n&lt;/div&gt;`"
   }
 ]
